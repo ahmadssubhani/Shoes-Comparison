@@ -1,0 +1,14 @@
+{
+  "fetched": 159,
+  "blocked": 0,
+  "errors": 0,
+  "disallowed": 0,
+  "no_data": 0,
+  "consec_blocks": 0,
+  "rejected": {
+    "kids": 4
+  },
+  "candidates": 433,
+  "notes": [],
+  "kept": 150
+}

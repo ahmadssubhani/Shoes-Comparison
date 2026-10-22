@@ -1,0 +1,17 @@
+{
+  "fetched": 307,
+  "blocked": 0,
+  "errors": 0,
+  "disallowed": 0,
+  "no_data": 0,
+  "consec_blocks": 0,
+  "rejected": {
+    "not_sneaker": 41,
+    "kids": 50
+  },
+  "candidates": 0,
+  "notes": [],
+  "pdp_ok": 295,
+  "pdp_no_style": 5,
+  "kept": 300
+}
