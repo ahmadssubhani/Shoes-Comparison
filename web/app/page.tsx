@@ -80,21 +80,21 @@ export default async function DiscoverPage() {
           </div>
         </div>
 
-        {/* Right column: lavender panel with a tilted card holding the full photo (not clickable) */}
-        <div className="relative flex h-[380px] items-center justify-center overflow-hidden rounded-[2.5rem] border border-white/40 bg-gradient-to-br from-[#d8d5f5] via-[#e2defc] to-[#cec9f7] sm:h-[480px] lg:h-[clamp(500px,34vw,700px)]">
-          <div className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 rounded-full bg-white/40 blur-2xl" />
-          <div className="pointer-events-none absolute -bottom-10 -left-10 h-64 w-64 rounded-full bg-accent/20 blur-2xl" />
+        {/* Right column: lavender panel sized to the photo card (padding all around) */}
+<div className="relative mx-auto flex items-center justify-center justify-self-center overflow-hidden rounded-[2.5rem] border border-white/40 bg-gradient-to-br from-[#d8d5f5] via-[#e2defc] to-[#cec9f7] p-8 sm:p-10 lg:p-12">
+  <div className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 rounded-full bg-white/40 blur-2xl" />
+  <div className="pointer-events-none absolute -bottom-10 -left-10 h-64 w-64 rounded-full bg-accent/20 blur-2xl" />
 
-          {/* Card is sized to the photo's 2:3 shape so the whole picture shows, no cropping */}
-          <div className="relative aspect-[2/3] h-[86%] -rotate-3 overflow-hidden rounded-[2rem] border-2 border-white/90 bg-[#0b0100] shadow-2xl">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={HERO_IMAGE}
-              alt="Featured running shoe"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-        </div>
+  {/* Photo card keeps its 2:3 shape, same size as before; the panel now wraps around it */}
+  <div className="relative aspect-[2/3] h-[380px] -rotate-3 overflow-hidden rounded-[2rem] border-2 border-white/90 bg-[#0b0100] shadow-2xl sm:h-[470px] lg:h-[clamp(470px,32.5vw,670px)]">
+    {/* eslint-disable-next-line @next/next/no-img-element */}
+    <img
+      src={HERO_IMAGE}
+      alt="Featured running shoe"
+      className="absolute inset-0 h-full w-full object-cover"
+    />
+  </div>
+</div>
       </section>
 
       {/* 2. RETAILER STRIP */}
