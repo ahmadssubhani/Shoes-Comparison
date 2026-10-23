@@ -96,7 +96,7 @@
 //               onClick={() => setSearchModalOpen(true)}
 //               aria-label="Search shoes (Press /)"
 //               title="Search (Press /)"
-//               className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-surface text-ink hover:border-text transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+//               className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-surface text-ink hover:border-text transition-colors focus:outline-none focus-visible:outline-none"
 //             >
 //               <IconSearch className="h-3.5 w-3.5" />
 //             </button>
@@ -289,7 +289,7 @@ export function Header() {
               onClick={() => setSearchModalOpen(true)}
               aria-label="Search shoes (Press /)"
               title="Search (Press /)"
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-surface text-ink hover:border-text transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-surface text-ink hover:border-text transition-colors focus:outline-none focus-visible:outline-none"
             >
               <IconSearch className="h-3.5 w-3.5" />
             </button>
