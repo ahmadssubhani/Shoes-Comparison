@@ -36,7 +36,9 @@ function isOfferStale(scrapedAt: string | null): boolean {
   const time = Date.parse(scrapedAt);
   if (Number.isNaN(time)) return false;
   const diffHours = (Date.now() - time) / (1000 * 60 * 60);
-  return diffHours > 48;
+  return diffHours > 24 * 6;
+  // return diffHours > 48;
+
 }
 
 function computeSaving(price: number | null, compareAt: number | null): number | null {

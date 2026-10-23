@@ -1,13 +1,48 @@
-name: Daily scrape
+# name: Daily scrape
 
+# on:
+#   schedule:
+#     - cron: "0 6 * * *"
+#   workflow_dispatch:
+
+# jobs:
+#   scrape:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: actions/setup-python@v5
+#         with:
+#           python-version: "3.12"
+#       - name: Install dependencies
+#         run: pip install -r scraper/requirements.txt
+#       - name: Run scraper
+#         env:
+#           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+#           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+#         run: python scraper/run.py
+#       - name: Upload offers.json
+#         if: always()
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: offers-json
+#           path: data/offers.json
+#           if-no-files-found: warn
+
+name: Scrape shoe data
+
+# Started every 5 days by the Vercel cron job (web/app/api/cron/scrape/route.ts).
+# You can also run it by hand from the Actions tab.
 on:
-  schedule:
-    - cron: "0 6 * * *"
   workflow_dispatch:
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -15,12 +50,14 @@ jobs:
           python-version: "3.12"
       - name: Install dependencies
         run: pip install -r scraper/requirements.txt
-      - name: Run scraper
+      - name: Scrape every store, then merge and report
+        run: python scraper/scrape_all.py --all
+      - name: Upload to Supabase
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-        run: python scraper/run.py
-      - name: Upload offers.json
+        run: python scraper/scrape_all.py --upload
+      - name: Keep offers.json
         if: always()
         uses: actions/upload-artifact@v4
         with:

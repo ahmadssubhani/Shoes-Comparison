@@ -160,7 +160,8 @@ export function ProductCard({ product }: { product: Product }) {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              toggleCompare(product.id);
+              toggleCompare(product.id, { title: product.cleanTitle, imageUrl: product.imageUrl ?? null, });
+              // toggleCompare(product.id);
             }}
             className={`w-full rounded-md border px-3 py-1.5 text-[10px] font-semibold tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
               compared

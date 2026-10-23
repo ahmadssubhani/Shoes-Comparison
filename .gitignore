@@ -7,3 +7,6 @@ __pycache__/
 *.pyc
 web/.next/
 web/node_modules/
+files_for_claude.txt
+part1.txt
+part2.txt

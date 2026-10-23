@@ -19,7 +19,7 @@ import json
 import os
 import re
 import sys
-import time
+import time from datetime import datetime, timezone
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -888,14 +888,15 @@ def upload(dry: bool, reset: bool) -> None:
             if len(page) < 1000:
                 break
             start += 1000
-    orows = []
+    orows = [] now_iso = datetime.now(timezone.utc).isoformat()
     for o in offers:
         orows.append({"product_id": id_by_key.get(o["match_key"]), "store": o["store"],
                       "store_title": o.get("store_title") or "", "price": o["price"],
                       "compare_at_price": o.get("compare_at_price"), "discount_pct": o.get("discount_pct"),
                       "sizes": o.get("sizes") or [], "in_stock": o.get("in_stock"), "url": o["url"],
                       "image_url": o.get("image_url"), "currency": o.get("currency") or "USD",
-                      "category": o.get("category") or "sneaker"})
+                      category": o.get("category") or "sneaker", "scraped_at": o.get("scraped_at") or now_iso})
+                    #  "category": o.get("category") or "sneaker"})
     for part in chunks(orows, 100):
         client.table("offers").upsert(part, on_conflict="store,url").execute()
     pc = client.table("products").select("id", count="exact").limit(1).execute().count
