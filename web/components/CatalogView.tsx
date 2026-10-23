@@ -605,16 +605,32 @@ export function CatalogView({ products, facets, currentFilters }: CatalogViewPro
         <span className="font-mono text-[10px] uppercase tracking-eyebrow text-muted shrink-0 mr-1">
           Quick filters:
         </span>
-        {QUICK_CHIPS.map((chip) => (
-          <button
-            key={chip.label}
-            type="button"
-            onClick={() => updateParams(chip.params)}
-            className="rounded-full border border-border bg-surface px-3 py-1 text-[11px] text-text shadow-sm hover:border-ink hover:bg-bg transition-colors shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            {chip.label}
-          </button>
-        ))}
+        {QUICK_CHIPS.map((chip) => {
+          const active = Object.entries(chip.params).every(
+            ([key, value]) => searchParams.get(key) === value,
+          );
+          return (
+            <button
+              key={chip.label}
+              type="button"
+              aria-pressed={active}
+              onClick={() =>
+                updateParams(
+                  active
+                    ? Object.fromEntries(Object.keys(chip.params).map((key) => [key, null]))
+                    : chip.params,
+                )
+              }
+              className={`rounded-full border px-3 py-1 text-[11px] shadow-sm transition-colors shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+                active
+                  ? "border-[#171612] bg-[#171612] text-white"
+                  : "border-border bg-surface text-text hover:border-ink hover:bg-bg"
+              }`}
+            >
+              {chip.label}
+            </button>
+          );
+        })}
       </div>
 
       {/* Top Bar: Counts & Sort & Mobile Filter Toggle */}
