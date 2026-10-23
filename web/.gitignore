@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+venv/
+node_modules/
+.env
+web/.env.local
+__pycache__/
+.next/
+*.pyc
+web/.next/
+web/node_modules/
+files_for_claude.txt
+part1.txt
+part2.txt
+=======
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -39,3 +53,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+>>>>>>> eca177d (Update hero section layout)

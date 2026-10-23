@@ -1,12 +1,12 @@
 {
-  "fetched": 218,
+  "fetched": 45,
   "blocked": 0,
   "errors": 0,
   "disallowed": 0,
-  "no_data": 16,
+  "no_data": 3,
   "consec_blocks": 0,
   "rejected": {},
-  "candidates": 4187,
+  "candidates": 4219,
   "notes": [],
-  "kept": 200
+  "kept": 40
 }

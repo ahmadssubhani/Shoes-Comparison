@@ -1,0 +1,14 @@
+{
+  "fetched": 0,
+  "blocked": 0,
+  "errors": 0,
+  "disallowed": 1,
+  "no_data": 0,
+  "consec_blocks": 0,
+  "rejected": {},
+  "candidates": 0,
+  "notes": [
+    "no candidate URLs found (sitemap layout differs - paste me this output)"
+  ],
+  "kept": 0
+}
