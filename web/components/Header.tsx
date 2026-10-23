@@ -244,7 +244,7 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 border-b border-border bg-bg/95 backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b-2 border-ink/15 bg-bg/95 backdrop-blur-md">>
         <div className="site-container flex items-center justify-between gap-4 py-2.5">
           {/* Left: Brand Logo */}
           <Link
